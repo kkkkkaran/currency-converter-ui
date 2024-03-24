@@ -11,7 +11,7 @@ export const useCurrenciesStore = defineStore('currencies', {
 
   },
   actions: {
-    async fetchAvailableCurrencies() {
+    async fetchAvailableCurrencies(errors) {
       try {
         const response = await axios.get('/api/currencies');
         this.availableCurrencies = Object.entries(response.data).map(([code, name]) => ({
@@ -22,24 +22,28 @@ export const useCurrenciesStore = defineStore('currencies', {
         console.error('Failed to fetch available currencies:', error);
       }
     },
-    async convertCurrencies() {
-      if (this.selectedCurrencies.length === 0) {
-        console.error('No currencies selected for conversion');
+    async convertCurrencies(setErrors) {
+      if (this.selectedCurrencies.length < 0) {
+        alert('Not enough currencies selected for conversion');
         return;
       }
+      this.selectedCurrencies.map(currency => console.log(currency.value))
       try {
         const response = await axios.get('/api/currencies/convert', {
           params: {
-            currencies: this.selectedCurrencies.join(','),
+            currencies: this.selectedCurrencies.map(currency => currency.code),
           },
         });
-        this.conversionMatrix = response.data.matrix;
+        this.conversionMatrix = response.data;
       } catch (error) {
-        console.error('Failed to convert currencies:', error);
+        if (error.response.status !== 422) throw error
+          setErrors.value = Object.values(
+              error.response.data.errors,
+          ).flat()
       }
     },
     setSelectedCurrencies(currencies) {
-      this.selectedCurrencies = currencies;
+      this.selectedCurrencies = currencies.map(currency => currency.code);
     },
   },
 });
