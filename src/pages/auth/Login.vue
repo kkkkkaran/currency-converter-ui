@@ -76,8 +76,13 @@ const submitLogin = () => {
 
             <div class="flex items-center justify-end mt-4">
                 <router-link
-                    to="/forgot-password"
+                    to="/register"
                     class="underline text-sm text-gray-600 hover:text-gray-900">
+                    Register
+                </router-link>
+                <router-link
+                    to="/forgot-password"
+                    class="ml-4 underline text-sm text-gray-600 hover:text-gray-900">
                     Forgot your password?
                 </router-link>
                 <PrimaryButton class="ml-4" :processing="processing">

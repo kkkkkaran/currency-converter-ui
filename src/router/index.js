@@ -1,6 +1,5 @@
 import { createWebHistory, createRouter } from 'vue-router'
 import { useUsers } from '@/stores/user'
-import Welcome from '@/pages/Welcome.vue'
 import PageNotFound from '@/pages/errors/404.vue'
 import Dashboard from '@/pages/Dashboard.vue'
 import Login from '@/pages/auth/Login.vue'
@@ -14,37 +13,6 @@ const APP_NAME = import.meta.env.VITE_APP_NAME
 const routes = [
     {
         path: '/',
-        name: 'welcome',
-        component: Welcome,
-        meta: {
-            title: 'Welcome',
-            metaTags: [
-                {
-                    name: 'Welcome',
-                    content:
-                        'An application / authentication starter kit frontend in Vue.js 3 for Laravel Breeze.',
-                },
-                {
-                    property: 'og:Welcome',
-                    content:
-                        'An application / authentication starter kit frontend in Vue.js 3 for Laravel Breeze.',
-                },
-            ],
-        },
-    },
-    {
-        path: '/home',
-        redirect: '/dashboard',
-        component: Dashboard,
-        query: {
-            verified: 'verified',
-        },
-        meta: {
-            guard: 'auth',
-        },
-    },
-    {
-        path: '/dashboard',
         name: 'dashboard',
         component: Dashboard,
         meta: {

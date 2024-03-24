@@ -44,13 +44,13 @@ const submitLogout = () => {
                                 class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <router-link
                                     v-slot="{ href, isActive, navigate }"
-                                    to="/dashboard"
+                                    to="/"
                                     custom>
                                     <NavLink
                                         :href="href"
                                         :active="isActive"
                                         @click="navigate">
-                                        Dashboard
+                                        Home
                                     </NavLink>
                                 </router-link>
                             </div>

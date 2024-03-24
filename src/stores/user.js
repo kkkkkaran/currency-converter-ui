@@ -140,7 +140,7 @@ export const useUsers = defineStore('users', {
                     this.userData = {}
                     this.authStatus = []
 
-                    this.router.push({ name: 'welcome' })
+                    this.router.push({ name: 'login' })
                 })
                 .catch(error => {
                     if (error.response.status !== 422) throw error

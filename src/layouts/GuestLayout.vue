@@ -7,7 +7,8 @@ import ApplicationLogo from '@/components/ApplicationLogo.vue'
         class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <div>
             <router-link to="/">
-                <ApplicationLogo class="w-20 h-20 fill-current text-gray-500" />
+                <ApplicationLogo class="w-28 h-28 fill-current text-gray-500" />
+                <h1>Currency Converter</h1>
             </router-link>
         </div>
 

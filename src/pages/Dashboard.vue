@@ -6,7 +6,7 @@ import AuthenticatedLayout from '@/layouts/AuthenticatedLayout.vue'
     <AuthenticatedLayout>
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
+                Currency Converter
             </h2>
         </template>
 
