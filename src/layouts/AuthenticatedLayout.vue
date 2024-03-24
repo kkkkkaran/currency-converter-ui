@@ -139,13 +139,13 @@ const submitLogout = () => {
                     <div class="pt-2 pb-3 space-y-1">
                         <router-link
                             v-slot="{ href, isActive, navigate }"
-                            to="/dashboard"
+                            to="/"
                             custom>
                             <ResponsiveNavLink
                                 :href="href"
                                 :active="isActive"
                                 @click="navigate">
-                                Dashboard
+                                Home
                             </ResponsiveNavLink>
                         </router-link>
                     </div>
