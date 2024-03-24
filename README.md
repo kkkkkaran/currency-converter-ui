@@ -1,39 +1,20 @@
-# Laravel Breeze - Vue.js 3 Edition
+# Currency Converter with Laravel Breeze & Vue.js 3
 
 ## Inspiration
 
-This project was inspired by the [Breeze Next.js](https://github.com/laravel/breeze-next) project. 🏝️
+This Currency Converter project is inspired by Laravel's approach to building modern web applications, combining the robust backend capabilities of Laravel with the dynamic frontend possibilities of Vue.js 3. Special thanks to faisalfjri's breeze-vue-api for providing the foundation and inspiration for integrating Laravel Breeze with a Vue.js 3 frontend.
 
 ## Introduction
 
-This repository is an implementing of the [Laravel Breeze](https://laravel.com/docs/starter-kits) application / authentication starter kit frontend in [Vue.js](https://vuejs.org). All of the authentication boilerplate is already written for you - powered by [Laravel Sanctum](https://laravel.com/docs/sanctum), allowing you to quickly begin pairing your beautiful Vue.js frontend with a powerful Laravel backend.
+The Currency Converter project leverages Laravel Breeze for its authentication and application scaffolding, providing a seamless integration between a Laravel backend and a Vue.js 3 frontend. By utilizing Laravel Sanctum for API token authentication, this setup allows for the quick development of a currency conversion application with both a powerful server and an interactive client-side experience.
 
 ## Documentation
 
 ### Installation
 
-First, create a Vue.js compatible Laravel backend by installing Laravel Breeze into a [fresh Laravel application](https://laravel.com/docs/installation) and installing Breeze's API scaffolding:
+Follow the backend setup at: https://github.com/kkkkkaran/currency-converter
 
-```bash
-# Create the Laravel application...
-laravel new vue-backend
-
-cd vue-backend
-
-# Install Breeze and dependencies...
-composer require laravel/breeze
-
-php artisan breeze:install api
-```
-
-Next, ensure that your application's `APP_URL` and `FRONTEND_URL` environment variables are set to `http://localhost:8000` and `http://localhost:3000`, respectively.
-
-After defining the appropriate environment variables, you may serve the Laravel application using the `serve` Artisan command:
-
-```bash
-# Serve the application...
-php artisan serve
-```
+Ensure that your application's `APP_URL` and `FRONTEND_URL` environment variables are set to `http://localhost:8000` and `http://localhost:3000`, respectively.
 
 Next, clone this repository and install its dependencies with `yarn install` or `npm install`. Then, copy the `.env.example` file to `.env` and supply the URL of your backend:
 
@@ -49,7 +30,3 @@ npm run dev
 ```
 
 > Note: Currently, we recommend using `localhost` during local development of your backend and frontend to avoid CORS "Same-Origin" issues.
-
-## License
-
-Laravel Breeze - Vue.js 3 Edition is open-sourced software licensed under the [MIT license](LICENSE.md).
