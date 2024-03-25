@@ -19,7 +19,7 @@ Ensure that your application's `APP_URL` and `FRONTEND_URL` environment variable
 Next, clone this repository and install its dependencies with `yarn install` or `npm install`. Then, copy the `.env.example` file to `.env` and supply the URL of your backend:
 
 ```
-VITE_APP_NAME=Breeze Vue.js 3 Api
+VITE_APP_NAME=Currency Converter
 VITE_PUBLIC_BACKEND_URL=http://localhost:8000
 ```
 

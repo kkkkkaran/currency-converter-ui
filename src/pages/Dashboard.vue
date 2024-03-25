@@ -28,10 +28,10 @@ const resetSelections = () => {
             </h2>
         </template>
 
-        <div class="mt-3 min-h-svh">
-            <div class="mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white shadow-sm sm:rounded-lg max-w-7xl">
-                    <div class="bg-white border-b border-gray-200 min-h-dvh sm:rounded-lg">
+        <div class="my-4">
+            <div class="mx-auto sm:px-6 lg:px-16">
+                <div class="bg-white shadow-sm sm:rounded-lg p-8">
+                    <div class="bg-white border-b border-gray-200 sm:rounded-lg min-h-96 pt-4">
                         <div class="flex">
                             <div class="w-1/2 p-4">
                                 <Combobox
