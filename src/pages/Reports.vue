@@ -3,11 +3,13 @@ import { computed, ref, onMounted, watch } from 'vue'
 import AuthenticatedLayout from '@/layouts/AuthenticatedLayout.vue'
 import { useCurrenciesStore } from '@/stores/currencies';
 import PrimaryButton from '../components/PrimaryButton.vue';
+import ReportGraph from '../components/ReportGraph.vue';
 
 const currenciesStore = useCurrenciesStore();
 const selectedCurrency = ref('');
 const selectedInterval = ref('');
 const selectedRange = ref('');
+const graphCsvUrl = ref(null)
 
 onMounted(async () => {
   await currenciesStore.fetchAvailableCurrencies();
@@ -42,6 +44,11 @@ const handleSubmit = async (event) => {
   await currenciesStore.submitReportRequest(selectedCurrency.value, startDate.value, endDate.value, selectedInterval.value);
   await currenciesStore.fetchReportRequests();
 };
+
+const loadGraph = (url) => {
+  graphCsvUrl.value = url
+  window.scrollTo(0, document.body.scrollHeight);
+}
 </script>
 
 <template>
@@ -117,6 +124,9 @@ const handleSubmit = async (event) => {
                           <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                             Report
                           </th>
+                          <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Graph Link
+                          </th>
                         </tr>
                       </thead>
                       <tbody class="bg-white divide-y divide-gray-200">
@@ -139,6 +149,11 @@ const handleSubmit = async (event) => {
                           <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-500 hover:text-blue-800">
                             <a :href="report.file_url" v-if="report.file_url" target="_blank">Download</a>
                           </td>
+                          <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-500 hover:text-blue-800">
+                            <PrimaryButton v-if="report.file_url" @click="loadGraph(report.file_url)">
+                              View Graph
+                            </PrimaryButton>  
+                          </td>
                         </tr>
                       </tbody>
                     </table>
@@ -148,6 +163,9 @@ const handleSubmit = async (event) => {
             </div>
           </div>
         </div>
+      </div>
+      <div v-if="graphCsvUrl" class="bg-white shadow sm:rounded-lg mt-3 max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <ReportGraph :file-url="graphCsvUrl" />
       </div>
     </AuthenticatedLayout>
 </template>
