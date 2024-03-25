@@ -6,21 +6,12 @@ import { useCurrenciesStore } from '@/stores/currencies';
 import PrimaryButton from '../components/PrimaryButton.vue';
 
 const currenciesStore = useCurrenciesStore()
-var selectedCurrencies = ref([])
 
-const setErrors = ref()
 const combobox = ref(null)
 
 onMounted(() => {
-  currenciesStore.fetchAvailableCurrencies(setErrors);
+  currenciesStore.fetchAvailableCurrencies();
 });
-
-const currencies = computed(() => {
-  return currenciesStore.availableCurrencies.map(currency => ({
-    code: currency.code,
-    name: `${currency.code} - ${currency.name}`
-  }))
-})
 
 const resetSelections = () => {
     currenciesStore.selectedCurrencies = []
@@ -37,17 +28,17 @@ const resetSelections = () => {
             </h2>
         </template>
 
-        <div class="py-12 min-h-svh">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white shadow-sm sm:rounded-lg">
-                    <div class="p-6 bg-white border-b border-gray-200 min-h-dvh">
+        <div class="mt-3 min-h-svh">
+            <div class="mx-auto sm:px-6 lg:px-8">
+                <div class="bg-white shadow-sm sm:rounded-lg max-w-7xl">
+                    <div class="bg-white border-b border-gray-200 min-h-dvh sm:rounded-lg">
                         <div class="flex">
                             <div class="w-1/2 p-4">
                                 <Combobox
                                 ref="combobox"
                                 v-model="currenciesStore.selectedCurrencies"
                                 label="Select Currencies to compare: (Max 5)"
-                                :options="currencies"
+                                :options="currenciesStore.availableCurrencies"
                                 max=5
                                 />
                             </div>
@@ -67,7 +58,7 @@ const resetSelections = () => {
                             <PrimaryButton class="mt-4 ml-5" @click="resetSelections">
                                 Reset
                             </PrimaryButton>
-                            <div class="overflow-x-auto relative shadow-md sm:rounded-lg pt-10">
+                            <div class="px-4 relative shadow-md sm:rounded-lg mt-10">
                                 <table class="w-full text-sm text-left text-gray-500">
                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                                         <tr>

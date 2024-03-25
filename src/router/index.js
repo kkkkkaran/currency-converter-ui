@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 import { useUsers } from '@/stores/user'
 import PageNotFound from '@/pages/errors/404.vue'
 import Dashboard from '@/pages/Dashboard.vue'
+import Reports from '@/pages/Reports.vue'
 import Login from '@/pages/auth/Login.vue'
 import Register from '@/pages/auth/Register.vue'
 import ForgotPassword from '@/pages/auth/ForgotPassword.vue'
@@ -15,6 +16,15 @@ const routes = [
         path: '/',
         name: 'dashboard',
         component: Dashboard,
+        meta: {
+            title: 'Dashboard',
+            guard: 'auth',
+        },
+    },
+    {
+        path: '/reports',
+        name: 'reports',
+        component: Reports,
         meta: {
             title: 'Dashboard',
             guard: 'auth',

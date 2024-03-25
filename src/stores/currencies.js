@@ -6,6 +6,7 @@ export const useCurrenciesStore = defineStore('currencies', {
     availableCurrencies: [],
     selectedCurrencies: [],
     conversionMatrix: {},
+    reportRequests: [],
   }),
   getters: {
 
@@ -16,7 +17,7 @@ export const useCurrenciesStore = defineStore('currencies', {
         const response = await axios.get('/api/currencies');
         this.availableCurrencies = Object.entries(response.data).map(([code, name]) => ({
             code,
-            name
+            name: `${code} - ${name}`
         }));
       } catch (error) {
         console.error('Failed to fetch available currencies:', error);
@@ -42,8 +43,26 @@ export const useCurrenciesStore = defineStore('currencies', {
           ).flat()
       }
     },
-    setSelectedCurrencies(currencies) {
-      this.selectedCurrencies = currencies.map(currency => currency.code);
+    async submitReportRequest(currency, startDate, endDate, interval) {
+      try {
+        const response = await axios.post('/api/currencies/reports', {
+          currency : currency,
+          start_date : startDate,
+          end_date : endDate,
+          interval : interval
+        });
+        this.fetchReportRequests();
+      } catch (error) {
+        console.error('Failed to submit report request:', error);
+      }
+    },
+    async fetchReportRequests() {
+      try {
+        const response = await axios.get('/api/currencies/reports');
+        this.reportRequests = response.data.data;
+      } catch (error) {
+        console.error('Failed to fetch report requests:', error);
+      }
     },
   },
 });

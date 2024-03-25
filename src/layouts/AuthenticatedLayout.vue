@@ -54,6 +54,20 @@ const submitLogout = () => {
                                     </NavLink>
                                 </router-link>
                             </div>
+                            <div
+                                class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                                <router-link
+                                    v-slot="{ href, isActive, navigate }"
+                                    to="/reports"
+                                    custom>
+                                    <NavLink
+                                        :href="href"
+                                        :active="isActive"
+                                        @click="navigate">
+                                        Reports
+                                    </NavLink>
+                                </router-link>
+                            </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
