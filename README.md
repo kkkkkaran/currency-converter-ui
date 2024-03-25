@@ -9,6 +9,7 @@ This Currency Converter project is inspired by Laravel's approach to building mo
 The Currency Converter project leverages Laravel Breeze for its authentication and application scaffolding, providing a seamless integration between a Laravel backend and a Vue.js 3 frontend. By utilizing Laravel Sanctum for API token authentication, this setup allows for the quick development of a currency conversion application with both a powerful server and an interactive client-side experience.
 
 ## Documentation
+Video Demo: https://youtu.be/GPUzJzuB9WA
 
 ### Installation
 
