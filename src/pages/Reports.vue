@@ -147,7 +147,7 @@ const loadGraph = (url) => {
                             {{ report.status }}
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-500 hover:text-blue-800">
-                            <a :href="report.file_url" v-if="report.file_url" target="_blank">Download</a>
+                            <a v-if="report.file_url" :href="report.file_url" target="_blank">Download</a>
                           </td>
                           <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-500 hover:text-blue-800">
                             <PrimaryButton v-if="report.file_url" @click="loadGraph(report.file_url)">
